@@ -1,0 +1,23 @@
+@use '../core/variables' as vars;
+
+.button {
+  font-family: vars.$font-title;
+  font-size: vars.$font-m;
+  font-weight: 500;
+  background-color: vars.$color-first;
+  color: vars.$color-white;
+  border: none;
+  padding: 0.2rem 2rem;
+  border-radius: vars.$border-radius;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-0.3rem);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: vars.$shadow-pop;
+  }
+}

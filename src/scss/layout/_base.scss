@@ -1,0 +1,126 @@
+@use '../core/variables' as vars;
+
+body {
+  font-family: vars.$font-body;
+  font-size: vars.$font-m;
+  line-height: 1.5;
+  color: vars.$color-black;
+  background-color: vars.$color-second;
+}
+
+body.dark {
+  .header--nav {
+    .nav--li,
+    a {
+      color: vars.$color-second;  
+    }
+  }
+
+
+  .header--logo img,
+  .hamburger--logo,
+  .dayNight--img {
+    filter: brightness(0) saturate(100%)
+            invert(86%) sepia(20%) saturate(600%)
+            hue-rotate(210deg) brightness(95%) contrast(95%);
+  }
+
+  background-color: vars.$color-first;   
+  color: vars.$color-second;              
+}
+
+body.dark a {
+  color: vars.$color-first;
+}
+
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6 {
+  color: vars.$color-second;
+}
+
+body.dark p {
+text-shadow:
+  -1px -1px 0 vars.$color-first,
+   1px -1px 0 vars.$color-first,
+  -1px  1px 0 vars.$color-first,
+   1px  1px 0 vars.$color-first;
+}
+
+body.dark {
+.button.button {
+  background-color: vars.$color-second;
+  color: vars.$color-first;
+}
+}
+
+body.dark .page__header {
+  background-color: vars.$color-first;
+}
+
+
+body.dark {
+  .hero__content {
+
+    &::after {
+      opacity: 1;
+    }
+
+    &::before {
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .hero__content--title,
+    .hero__content--text {
+      color: vars.$color-white;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
+  }
+}
+
+
+body.dark .header--nav.is-open {
+  background-color: vars.$color-white;
+  border-color: vars.$color-second;
+}
+
+body.dark .header--nav .nav--li {
+  color: vars.$color-second;
+}
+
+body.dark {
+  .main__title--cat {
+    .title--title,
+    .title--text {
+      color: vars.$color-second;
+    }
+  }
+}
+
+body.dark {
+  .page__main {
+    .main__title--cat {
+      .main--title {
+        .title--title,
+        .title--text {
+          color: vars.$color-second;
+        }
+      }
+    }
+  }
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hiddenItem {
+  display: none;
+
+}

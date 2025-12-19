@@ -1,7 +1,10 @@
 @use 'core/reset';
 @use 'components/code';
 @use 'components/links';
+@use 'components/button';
 @use 'layout/page';
+@use 'layout/hero';
 @use 'layout/header';
 @use 'layout/footer';
 @use 'pages/index';
+@use 'layout/base';

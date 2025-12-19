@@ -1,1 +1,96 @@
 @use '../core/variables' as vars;
+
+.page__header {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 2rem;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: vars.$color-second;
+
+  .header--logo {
+    width: 8rem;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .header--hamburger {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    @media (min-width: vars.$tablet) {
+      display: none;
+    }
+  }
+
+  .hamburger--logo {
+    width: 3rem;
+    height: auto;
+    padding: 0.5rem;
+  }
+
+
+  .header--nav {
+    display: none;
+
+ 
+    &.is-open {
+      display: block;
+      position: absolute;
+      top: 1.4rem;
+      right: 1rem;
+
+      background-color: vars.$color-white;
+      border-radius: 1rem;
+      padding: 0.8rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+              .nav--li {
+          font-size: 0.8rem;
+          font-weight: 700;
+          color: vars.$color-first;
+          cursor: pointer;
+        }
+    }
+
+ 
+    @media (min-width: vars.$tablet) {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem;
+      position: static;
+
+      .nav--ul {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        list-style: none;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+
+        .nav--li {
+          font-size: vars.$font-m;
+          font-weight: 700;
+          color: vars.$color-first;
+          cursor: pointer;
+          padding: 0.5rem;
+        }
+      }
+    }
+  }
+}
+

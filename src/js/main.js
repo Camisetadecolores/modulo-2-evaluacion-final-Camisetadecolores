@@ -18,7 +18,8 @@ const templateAnimeCard = document.querySelector('#templateAnimeCard');
 const noImg = 'https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png';
 const placeHolderImg = './images/no-image.png';
 const initialText = '<p>Tu escribe, que yo lo busco :)</p>';
-const initialFavText = '<p>No tienes favoritos...aún :(</p>';
+const initialFavText = '<p class="initialFavText">No tienes favoritos...aún :(</p>';
+const imgSearchBox = '<img class="imgSearchBox" src=images/cat2.png alt: gatito dos</img>';
 
 let saveResults = [];
 let arrayFav = [];
@@ -57,7 +58,7 @@ function createAnimeCard(anime) {
 
   animeCardImg.alt = anime.title;
   card.dataset.id = animedataId;
-
+  
   return cardFragment;
 }
 
@@ -79,24 +80,27 @@ const printAnimeCard = (animeList) => {
 // PRINT FAVS
 function printFavs() {
   const titleFav = containerFav.querySelector('h2');
-  const fixedText = containerFav.querySelector('p'); 
   const clearBtn = containerFav.querySelector('#buttonResetFav'); 
 
   containerFav.innerHTML = '';
 
   if (titleFav) containerFav.appendChild(titleFav);
-  if (fixedText) containerFav.appendChild(fixedText);
   if (clearBtn) containerFav.appendChild(clearBtn);
+
 
   if (arrayFav.length === 0) {
     containerFav.insertAdjacentHTML('beforeend', initialFavText);
+    toggleResetFavButton();
     return;
   }
 
   for (let anime of arrayFav) {
     const animeFavCard = createAnimeCard(anime);
     containerFav.appendChild(animeFavCard);
+      
   }
+
+  toggleResetFavButton();
 }
 
 // ADD TO FAVORITES AND SAVE IN LOCAL STORAGE
@@ -132,6 +136,16 @@ const resetFavorites = () => {
   localStorage.removeItem('favorites');
   printFavs();
 };
+
+// HIDE FAVORITE BUTTON
+const toggleResetFavButton = () => {
+    if (arrayFav.length === 0) {
+    buttonResetFav.style.display = 'none';
+  } else {
+    buttonResetFav.style.removeProperty('display'); // <- clave
+  }
+};
+
 
 // LISTENER TO GET THE RESULTS
 form.addEventListener('submit', async (e) => {
@@ -179,6 +193,7 @@ containerSearch.addEventListener('click', (e) => {
   addToFavorites(clickAnime);
 
   console.log(arrayFav);
+  
 });
 
 // CLICK TO REMOVE FAV
@@ -204,3 +219,60 @@ buttonResetFav.addEventListener('click', () => {
 arrayFav = JSON.parse(localStorage.getItem('favorites')) ?? [];
 printFavs();
 containerSearch.innerHTML = initialText;
+containerSearch.insertAdjacentHTML('beforeend', imgSearchBox);
+
+
+
+//--------------------------------------------
+
+// HAMBURGER MENU
+
+const hamburger = document.querySelector('#hamburger');
+const nav = document.querySelector('.header--nav');
+
+hamburger.addEventListener('click', (ev) => {
+  ev.preventDefault();
+  nav.classList.toggle('is-open');
+});
+
+document.addEventListener('click', (ev) => {
+  if (!hamburger.contains(ev.target) && !nav.contains(ev.target)) {
+    nav.classList.remove('is-open');
+  }
+});
+
+nav.addEventListener('click', () => {
+  nav.classList.remove('is-open');
+});
+
+
+// DARK-LIGHT MODE
+
+const dayBtn = document.querySelector('.dayNight--img[data-theme="light"]');
+const nightBtn = document.querySelector('.dayNight--img[data-theme="dark"]');
+const body = document.body;
+
+function setTheme(theme) {
+  if (theme === 'dark') {
+    body.classList.add('dark');
+    body.classList.remove('light');
+  } else {
+    body.classList.add('light');
+    body.classList.remove('dark');
+  }
+
+  localStorage.setItem('theme', theme);
+}
+
+
+dayBtn.addEventListener('click', (e) => {
+  e.preventDefault(); 
+  setTheme('light');
+});
+nightBtn.addEventListener('click', (e) => {
+  e.preventDefault(); 
+  setTheme('dark');
+});
+
+const savedTheme = localStorage.getItem('theme') || 'light';
+setTheme(savedTheme);

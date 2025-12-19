@@ -1,23 +1,37 @@
-<main class="page__main">
+<main class="page__main" id="page__main">
 
-    <h1>Mi buscador de Anime</h1>
-    <form id="formSearch">
-        <input type="text" id="inputUser" placeholder="Escribe aquí tu anime">
-        <button type="submit" id="buttonSearch" class="button" aria-label="buscar">Buscar</button>
-        <button type="button" id="buttonReset" class="button" aria-label="borrar">Reset</button>
-    </form>
+  <section class="main__title--cat">
+    <div class="main--cat">
+      <img class="img--cat" src="images/cat1.png" alt="gatito">
+    </div>
 
-    <section id="containerSearch">
+    <div class="main--title">
+      <h2 class="title--title">Catnime</h2>
+      <h2 class="title--text">Finder</h2>
+    </div>
+  </section>
 
+  <form id="formSearch" class="formSearch">
+    <input class="input" type="text" id="inputUser"
+      placeholder=" Escribe aquí tu búsqueda: Naruto, Ghibli, Dragon Ball...">
+
+    <div class="formSearch__actions">
+      <button type="submit" id="buttonSearch" class="button" aria-label="buscar">Buscar</button>
+      <button type="button" id="buttonReset" class="button" aria-label="borrar">Reset</button>
+    </div>
+  </form>
+
+
+  <div class="main--results">
+    <section class="containerFav" id="containerFav">
+      <h2 class="containerFav--tittle">Favoritos</h2>
+      <button type="button" id="buttonResetFav" class="button" aria-label="borrar todo">Borrar todos</button>
     </section>
 
-
-    <section id="containerFav">
-        <h2>Favoritos</h2>
-        <p>Aquí aparecerán tus animes favoritos ⭐</p>
-        <button type="button" id="buttonResetFav" class="button" aria-label="borrar todo">Borrar todos</button>
+    <section class="containerSearch" id="containerSearch">
+      <h2 class="containerSearch--tittle">Resultados</h2>
     </section>
-
+  </div>
 
   <template id="templateAnimeCard">
     <div class="animeCard">

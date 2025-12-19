@@ -1,0 +1,21 @@
+{
+  "name": "Catnime",
+  "short_name": "Catnime",
+  "icons": [
+    {
+      "src": "/Users/camisetadecolores/Documents/ADALAB/adalabEjercicios/modulo-2-evaluacion-final-Camisetadecolores/public/images/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/Users/camisetadecolores/Documents/ADALAB/adalabEjercicios/modulo-2-evaluacion-final-Camisetadecolores/public/images/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#b7b2d2",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

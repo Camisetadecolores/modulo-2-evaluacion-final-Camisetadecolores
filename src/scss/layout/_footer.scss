@@ -1,2 +1,17 @@
 @use '../core/variables' as vars;
 
+.page__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+    .footer--title {
+        font-family: vars.$font-title;
+        font-size: vars.$font-s;
+    }
+
+    .footer--text {
+        font-family: vars.$font-body;
+    }
+}
